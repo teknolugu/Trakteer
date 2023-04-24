@@ -1,5 +1,6 @@
-<?php
+<?php // https://github.com/jovanzers/Trakteer
 if (empty($_GET['url'])) {
+    echo '<a href="https://github.com/jovanzers/Trakteer">How to use?</a><hr>';
     echo 'ZERS was here!<br>With ❤️ by WinTen Dev';
     exit();
 }
