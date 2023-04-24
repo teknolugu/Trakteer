@@ -23,14 +23,14 @@ $dom = new DOMDocument();
 $xpath = new DOMXPath($dom);
 $orderId = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[4]/div[2]/div[2]');
 $cendol = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[3]/div[1]/div[1]/span');
-$date = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[4]/div[1]/div[1]/div[2]');
+$orderDate = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[4]/div[1]/div[1]/div[2]');
 $paymentMethod = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[4]/div[1]/div[2]/div[2]');
 $amount = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[3]/div[2]');
 $adminFees = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[3]/div[1]/div[4]/span[2]');
 
 $result = [
     'OrderId' => $orderId[0]->nodeValue,
-    'OrderDate' => $date[0]->nodeValue,
+    'OrderDate' => $orderDate[0]->nodeValue,
     'PaymentMethod' => $paymentMethod[0]->nodeValue,
     'CendolCount' => (int) preg_replace('/[^0-9]/', '', $cendol[0]->nodeValue),
     'AdminFees' => (int) preg_replace('/[^0-9]/', '', $adminFees[0]->nodeValue),
