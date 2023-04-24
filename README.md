@@ -7,11 +7,11 @@ Scrap Trakteer.id payment status
 ### Output
 ```
 {
-  "OrderId": "9d435e23-3658-55b4-bee3-40827230bbab",
-  "OrderDate": "24 February 2023, 10:00 WIB",
-  "PaymentMethod": "QRIS",
-  "CendolCount": 1,
-  "AdminFees": 40,
-  "Total": 5040
+    "OrderId": "9d435e23-3658-55b4-bee3-40827230bbab",
+    "OrderDate": "2023-02-24 10:00",
+    "PaymentMethod": "QRIS",
+    "CendolCount": 1,
+    "AdminFees": 40,
+    "Total": 5040
 }
 ```
