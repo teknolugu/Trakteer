@@ -1,11 +1,15 @@
 <?php // https://github.com/jovanzers/Trakteer
-if (empty($_GET['url'])) {
+if (empty($_GET['oid'])) {
     echo '<a href="https://github.com/jovanzers/Trakteer">How to use?</a><hr>';
     echo 'ZERS was here!<br>With ❤️ by WinTen Dev';
     exit();
 }
 
-$url = $_GET['url'];
+$oid = $_GET['oid'];
+$url = $oid;
+if (strpos($oid, 'trakteer.id') == false) {
+    $url = 'https://trakteer.id/payment-status/' . $oid;
+}
 $ch = curl_init($url);
 curl_setopt_array($ch, [
     CURLOPT_RETURNTRANSFER => true,
