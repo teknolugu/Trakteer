@@ -34,7 +34,7 @@ $adminFees = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[3]/div[1]/div[
 
 $result = [
     'OrderId' => @$orderId[0]->nodeValue,
-    'OrderDate' => date('Y-m-d H:i', strtotime(str_replace(' WIB', '', @$orderDate[0]->nodeValue))),
+    'OrderDate' => date('Y-m-d\TH:i:s\Z', strtotime(str_replace(' WIB', '', @$orderDate[0]->nodeValue))),
     'PaymentMethod' => @$paymentMethod[0]->nodeValue,
     'CendolCount' => (int) preg_replace('/[^0-9]/', '', @$cendol[0]->nodeValue),
     'AdminFees' => (int) preg_replace('/[^0-9]/', '', @$adminFees[0]->nodeValue),
