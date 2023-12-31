@@ -1,16 +1,23 @@
-<?php // https://github.com/jovanzers/Trakteer
-if (empty($_GET['oid'])) {
+<?php
+// https://github.com/jovanzers/Trakteer
+
+error_reporting(0);
+
+$oid = $_GET['oid'];
+$url = $_GET['url'];
+
+$input = $oid ?? $url ?? "";
+
+if (empty($input)) {
     echo '<a href="https://github.com/jovanzers/Trakteer">How to use?</a><hr>';
     echo 'ZERS was here!<br>With ❤️ by WinTen Dev';
     exit();
 }
 
-$oid = $_GET['oid'];
-$url = $oid;
-if (strpos($oid, 'trakteer.id') == false) {
-    $url = 'https://trakteer.id/payment-status/' . $oid;
+if (strpos($input, 'trakteer.id') == false) {
+    $input = 'https://trakteer.id/payment-status/' . $input;
 }
-$ch = curl_init($url);
+$ch = curl_init($input);
 curl_setopt_array($ch, [
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HTTPHEADER => [
@@ -36,9 +43,9 @@ $result = [
     'OrderId' => @$orderId[0]->nodeValue,
     'OrderDate' => date('Y-m-d\TH:i:s\Z', strtotime(str_replace(' WIB', '', @$orderDate[0]->nodeValue))),
     'PaymentMethod' => @$paymentMethod[0]->nodeValue,
-    'CendolCount' => (int) preg_replace('/[^0-9]/', '', @$cendol[0]->nodeValue),
-    'AdminFees' => (int) preg_replace('/[^0-9]/', '', @$adminFees[0]->nodeValue),
-    'Total' => (int) preg_replace('/[^0-9]/', '', @$amount[0]->nodeValue)
+    'CendolCount' => (int)preg_replace('/[^0-9]/', '', @$cendol[0]->nodeValue),
+    'AdminFees' => (int)preg_replace('/[^0-9]/', '', @$adminFees[0]->nodeValue),
+    'Total' => (int)preg_replace('/[^0-9]/', '', @$amount[0]->nodeValue)
 ];
 
 header('Content-Type: application/json');
