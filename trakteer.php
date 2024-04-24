@@ -33,7 +33,7 @@ $dom = new DOMDocument();
 
 $xpath = new DOMXPath($dom);
 $orderId = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[4]/div[2]/div[2]');
-$cendol = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[3]/div[1]/div[1]/span');
+$cendol = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[3]/div[2]/div/div[1]/span[2]');
 $orderDate = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[4]/div[1]/div[1]/div[2]');
 $paymentMethod = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[4]/div[1]/div[2]/div[2]');
 $amount = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[3]/div[2]');
@@ -43,7 +43,7 @@ $result = [
     'OrderId' => @$orderId[0]->nodeValue,
     'OrderDate' => date('Y-m-d\TH:i:s\Z', strtotime(str_replace(' WIB', '', @$orderDate[0]->nodeValue))),
     'PaymentMethod' => @$paymentMethod[0]->nodeValue,
-    'CendolCount' => (int)preg_replace('/[^0-9]/', '', @$cendol[0]->nodeValue),
+    'CendolCount' => (int)preg_replace('/[^0-9]/', '', explode('x', @$cendol[0]->nodeValue)),
     'AdminFees' => (int)preg_replace('/[^0-9]/', '', @$adminFees[0]->nodeValue),
     'Total' => (int)preg_replace('/[^0-9]/', '', @$amount[0]->nodeValue)
 ];
