@@ -36,7 +36,7 @@ $orderId = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[4]/div[2]/div[2]
 $cendol = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[3]/div[2]/div/div[1]/span[2]');
 $orderDate = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[4]/div[1]/div[1]/div[2]');
 $paymentMethod = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[4]/div[1]/div[2]/div[2]');
-$amount = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[3]/div[2]');
+$amount = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[3]/div[3]');
 $adminFees = $xpath->query('//*[@id="wrapper"]/div/div/div[3]/div[3]/div[2]/div/div[2]/span[2]');
 
 $result = [
