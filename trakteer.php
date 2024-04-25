@@ -43,7 +43,7 @@ $result = [
     'OrderId' => @$orderId[0]->nodeValue,
     'OrderDate' => date('Y-m-d\TH:i:s\Z', strtotime(str_replace(' WIB', '', @$orderDate[0]->nodeValue))),
     'PaymentMethod' => @$paymentMethod[0]->nodeValue,
-    'CendolCount' => (int)preg_replace('/[^0-9]/', '', explode('x', @$cendol[0]->nodeValue)),
+    'CendolCount' => (int)preg_replace('/[^0-9]/', '', explode('x', @$cendol[0]->nodeValue)[1]),
     'AdminFees' => (int)preg_replace('/[^0-9]/', '', @$adminFees[0]->nodeValue),
     'Total' => (int)preg_replace('/[^0-9]/', '', @$amount[0]->nodeValue)
 ];
